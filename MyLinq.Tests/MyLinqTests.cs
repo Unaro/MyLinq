@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace MyLinq.Tests
 {
     public class WhereTests
@@ -27,7 +30,7 @@ namespace MyLinq.Tests
         [Fact]
         public void NotEmptyCollection_GetNonFeetElement_EmptyResult()
         {
-            var array = new[] { 1, 2, 3, 5, 6, 12, 5, 22 };
+            var array = new List<int> { 1, 2, 3, 5, 6, 12, 5, 22 };
 
             var result = array.Where(x => x == -5);
 
@@ -39,7 +42,7 @@ namespace MyLinq.Tests
         [Fact]
         public void NotEmptyCollection_GradeTen_Single()
         {
-            var array = new (int Grade, double Salary)[]
+            var array = new List<(int Grade, double Salary)>
             {
                 (Grade: 5, Salary: 1200),
                 (Grade: 10, Salary: 2400)
@@ -51,6 +54,30 @@ namespace MyLinq.Tests
             Assert.Single(result);
 
 
+        }
+
+        [Fact]
+        public void NotEmptyCollection_FirstItem_Success()
+        {
+            var array = new List<int>
+            {
+                1, 2, 3, 4
+            };
+
+
+            var result = array.First();
+
+            Assert.Equal(1, result);
+
+
+        }
+
+        [Fact]
+        public void NotEmptyCollection_FirstItem_Failure()
+        {
+            var array = Array.Empty<int>();
+            Assert.Throws<InvalidOperationException>(() => array.First());
+        
         }
     }
 }
