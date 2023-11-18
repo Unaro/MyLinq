@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MyLinq
+﻿namespace MyLinq
 {
     public static class MyLinqExtension
     {
