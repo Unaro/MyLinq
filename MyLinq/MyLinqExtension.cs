@@ -51,5 +51,15 @@
             return false;
         }
 
+        public static IEnumerable<TResult> Select<TSource, TResult>(this IEnumerable<TSource> sources, Func<TSource, TResult> func)
+        {
+            List<TResult> list = new();
+            foreach(TSource value in sources)
+            {
+                list.Add(func(value));
+            }
+            return list;
+
+        }
     }
 }

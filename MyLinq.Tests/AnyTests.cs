@@ -31,5 +31,13 @@ namespace MyLinq.Tests
             var result = array.Any((value) => value == (2, 3));
             Assert.True(result);
         }
+
+        [Fact]
+        public void NotEmptyCollectionList_Any_True()
+        {
+            var array = new List<(int, int)>{ (1, 2), (2, 3), (4, 5), (6, 7) };
+            var result = array.Any((value) => value == (2, 3));
+            Assert.True(result);
+        }
     }
 }
