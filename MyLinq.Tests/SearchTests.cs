@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace MyLinq.Tests
 {
-    public class SearchTests
+    public class SelectTests
     {
 
-        [Fact] public void NotEmptyCollection_Select_ItemMultiple3_True()
+        [Fact] public void NotEmptyIntCollection_Select_СonvertToString_Success()
         {
             var actual = new List<int>
             {
-                1, 2, 3, 4, 5, 6, 7,
+                1, 2, 3, 4
             };
 
-            var expected = new List<int>
+            string[] expected =
             {
-                1*3, 2*3, 3*3, 4*3, 5*3, 6*3, 7*3 
+                "1" + "Привет", "2" + "Привет", "3" + "Привет", "4" + "Привет"
             };
-
-            var result = actual.Select((item) => { return item * 3; });
+            
+            var result = actual.Select(item => item.ToString()+"Привет");
 
             Assert.Equal(result, expected);
 
@@ -41,7 +41,7 @@ namespace MyLinq.Tests
                 1*3, 2*3, 3*3, 4*3, 5*3, 6*3, 7*3
             };
 
-            var result = actual.Select((item) => { return item * 2; });
+            var result = actual.Select(item => item * 2);
 
             Assert.NotEqual(result, expected);
 

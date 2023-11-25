@@ -55,9 +55,8 @@
         {
             List<TResult> list = new();
             foreach(TSource value in sources)
-            {
-                list.Add(func(value));
-            }
+                list.Add(func.Invoke(value));
+
             return list;
 
         }
