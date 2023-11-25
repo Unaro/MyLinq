@@ -17,12 +17,39 @@
         } 
         public static TSource First<TSource>(this IEnumerable<TSource> sources)
         {
-
             foreach (TSource value in sources)
                 return value;
             throw new InvalidOperationException(nameof(sources));
         }
 
- 
+        public static TSource FirstOrDefault<TSource>(this IEnumerable<TSource> sources)
+        {
+            foreach (TSource value in sources)
+                return value;
+           return default;
+        }
+
+        public static TSource FirstOrDefault<TSource>(this IEnumerable<TSource> sources, Predicate<TSource> predicate)
+        {
+            foreach (TSource value in sources)
+                if(predicate?.Invoke(value) is true)
+                {
+                    return value;
+                }
+                
+            return default;
+        }
+
+        public static bool Any<TSource>(this IEnumerable<TSource> sources, Predicate<TSource> predicate)
+        {
+            foreach (TSource value in sources)
+                if (predicate?.Invoke(value) is true)
+                {
+                    return true;
+                }
+
+            return false;
+        }
+
     }
 }

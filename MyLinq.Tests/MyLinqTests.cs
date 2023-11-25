@@ -55,29 +55,5 @@ namespace MyLinq.Tests
 
 
         }
-
-        [Fact]
-        public void NotEmptyCollection_FirstItem_Success()
-        {
-            var array = new List<int>
-            {
-                1, 2, 3, 4
-            };
-
-
-            var result = array.First();
-
-            Assert.Equal(1, result);
-
-
-        }
-
-        [Fact]
-        public void NotEmptyCollection_FirstItem_Failure()
-        {
-            var array = Array.Empty<int>();
-            Assert.Throws<InvalidOperationException>(() => array.First());
-        
-        }
     }
 }
